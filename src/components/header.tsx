@@ -54,7 +54,6 @@ export const Header = () => {
       ([entry]) => {
         const visibility = entry.isIntersecting;
         if (visibility) {
-          console.log('------');
           setActiveNav(entry.target.id);
         }
       },

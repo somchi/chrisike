@@ -11,8 +11,9 @@ export const Portfolio = forwardRef<
         <h1 className="font-bold text-4xl text-center">My Work</h1>
         <div className="h-1 w-20 bg-green-400 justify-self-center flex"></div>
       </div>
-
-      <Tabs />
+      <div className="grid max-w-screen-2xl justify-self-center">
+        <Tabs />
+      </div>
     </section>
   );
 });

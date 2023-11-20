@@ -1,13 +1,13 @@
 import './App.css';
 import { Header } from './components/header';
 import { Footer } from './components/footer';
-import Home from './components';
+import Home from './pages';
 
 function App() {
   return (
-     <>
+    <>
       <Header />
-      <Home/>
+      <Home />
       <Footer />
     </>
   );

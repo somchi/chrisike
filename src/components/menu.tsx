@@ -2,6 +2,8 @@
 
 import { Separator } from './separetor';
 import { Tabs } from '../_libs/enums';
+import { useContext } from 'react';
+import { AppContext } from '../context/provider';
 
 export const Menu = ({
   activeNav,
@@ -10,6 +12,7 @@ export const Menu = ({
   activeNav: string;
   setActiveNav: (activeNav: string) => void;
 }) => {
+  const { state } = useContext(AppContext);
   const onClick = (e: any) => {
     const section = e.target.name;
     const elem = document.getElementById(section);
@@ -17,7 +20,7 @@ export const Menu = ({
     elem.scrollIntoView({ behavior: 'smooth' });
     setActiveNav(section);
   };
-  console.log(activeNav, '==');
+
   return (
     <div className="grid md:flex items-center md:gap-10 gap-2 font-medium text-lg">
       <button
@@ -57,26 +60,21 @@ export const Menu = ({
       >
         Portfolio
       </button>
-      <Separator className="md:hidden !bg-slate-700" />
-      <button
-        name="client"
-        className={`${
-          activeNav === Tabs.Client ? 'text-green-400' : 'text-white'
-        }`}
-        onClick={onClick}
-      >
-        Clients
-      </button>
-      <Separator className="md:hidden !bg-slate-700" />
-      <button
-        name="contact"
-        className={`${
-          activeNav === Tabs.Contact ? 'text-green-400' : 'text-white'
-        }`}
-        onClick={onClick}
-      >
-        Contact
-      </button>
+
+      {state.reviews.length === 0 ? null : (
+        <>
+          <Separator className="md:hidden !bg-slate-700" />
+          <button
+            name="client"
+            className={`${
+              activeNav === Tabs.Client ? 'text-green-400' : 'text-white'
+            }`}
+            onClick={onClick}
+          >
+            Clients
+          </button>
+        </>
+      )}
     </div>
   );
 };

@@ -2,7 +2,7 @@ import { Copyright } from 'lucide-react';
 
 export const Footer = () => {
   return (
-    <footer className="h-28 grid px-10 md:px-20">
+    <footer className="h-28 grid px-10 md:px-20 bg-gray-700">
       <div className="flex items-center gap-2 font-semibold text-lg flex-wrap">
         <span>Copyright </span>
         <Copyright />
