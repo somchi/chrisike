@@ -18,33 +18,36 @@ export type Skill = {
 
 export type Review = {
   name: string;
-  img: string;
+  img: string | Blob | any;
   id?: string;
-  dateCreate?: string;
+  dateCreate?: string | number;
   lastModified?: string;
   createdBy?: string;
 };
 
 export type Design = {
   name?: string;
-  img: string;
+  img: string | Blob | any;
   id?: string;
-  dateCreate?: string;
+  dateCreate?: string | number;
   lastModified?: string;
   createdBy?: string;
 };
 
 export type Video = {
   name?: string;
-  video: string;
+  video: string | Blob | any;
   id?: string;
-  dateCreate?: string;
+  dateCreate?: string | number;
   lastModified?: string;
   createdBy?: string;
 };
 
 export type AppStore = {
   activeNav: string;
+  designs: Design[];
+  reviews: Review[];
+  videos: Video[];
 };
 
 export type FormFooter = { title: string; action: string; linkPath: string };

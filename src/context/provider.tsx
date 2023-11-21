@@ -4,6 +4,9 @@ import { appReducer } from './reducer';
 
 const INITIAL_STATE: AppStore = {
   activeNav: 'home',
+  designs: [],
+  videos: [],
+  reviews: [],
 };
 
 export const AppContext = createContext<{
@@ -11,9 +14,11 @@ export const AppContext = createContext<{
   dispatch: React.Dispatch<any>;
 }>({ state: INITIAL_STATE, dispatch: () => null });
 
-export const AppProvider = () => {
+export const AppProvider = ({ children }: { children: React.ReactNode }) => {
   const [state, dispatch] = useReducer(appReducer, INITIAL_STATE);
   return (
-    <AppContext.Provider value={{ state, dispatch }}></AppContext.Provider>
+    <AppContext.Provider value={{ state, dispatch }}>
+      {children}
+    </AppContext.Provider>
   );
 };
