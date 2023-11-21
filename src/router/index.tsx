@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, HashRouter } from 'react-router-dom';
+import { Routes, Route, HashRouter } from 'react-router-dom';
 import App from '../App';
 import AdminHome from '../pages/admin';
 import AddDesign from '../pages/admin/design';
