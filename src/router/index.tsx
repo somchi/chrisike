@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, HashRouter } from 'react-router-dom';
 import App from '../App';
 import AdminHome from '../pages/admin';
 import AddDesign from '../pages/admin/design';
@@ -18,7 +18,7 @@ import Login from '../pages/admin/auth/login';
 
 export const Routers = () => {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path="/" element={<App />} />
         <Route path={LOGIN.href} element={<Login />} />
@@ -63,6 +63,6 @@ export const Routers = () => {
           }
         />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
