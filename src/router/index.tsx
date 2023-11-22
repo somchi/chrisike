@@ -18,7 +18,7 @@ import Login from '../pages/admin/auth/login';
 
 export const Routers = () => {
   return (
-    <HashRouter>
+    <HashRouter basename="/">
       <Routes>
         <Route path="/" element={<App />} />
         <Route path={LOGIN.href} element={<Login />} />

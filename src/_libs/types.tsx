@@ -16,10 +16,26 @@ export type Skill = {
   createdBy?: string;
 };
 
+export type CreateReview = {
+  name: string;
+  img: string | Blob | any;
+  dateCreate?: string | number;
+  lastModified?: string;
+  createdBy?: string;
+};
+
 export type Review = {
   name: string;
   img: string | Blob | any;
-  id?: string;
+  id: string;
+  dateCreate?: string | number;
+  lastModified?: string;
+  createdBy?: string;
+};
+
+export type CreateDesign = {
+  name?: string;
+  img: string | Blob | any;
   dateCreate?: string | number;
   lastModified?: string;
   createdBy?: string;
@@ -28,7 +44,15 @@ export type Review = {
 export type Design = {
   name?: string;
   img: string | Blob | any;
-  id?: string;
+  id: string;
+  dateCreate?: string | number;
+  lastModified?: string;
+  createdBy?: string;
+};
+
+export type CreateVideo = {
+  name?: string;
+  video: string | Blob | any;
   dateCreate?: string | number;
   lastModified?: string;
   createdBy?: string;
@@ -37,7 +61,7 @@ export type Design = {
 export type Video = {
   name?: string;
   video: string | Blob | any;
-  id?: string;
+  id: string;
   dateCreate?: string | number;
   lastModified?: string;
   createdBy?: string;

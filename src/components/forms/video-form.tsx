@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Video } from '../../_libs/types';
+import { CreateVideo } from '../../_libs/types';
 import { DropzoneVideo } from '../admin-sections/dropzone-video';
 import { FormControl } from './form-control';
 import { Input } from './input';
@@ -27,7 +27,7 @@ export const VideoForm = () => {
     e.preventDefault();
     setload(true);
     const date: any = new Date();
-    const payload: Video = {
+    const payload: CreateVideo = {
       ...data,
       dateCreate: date,
     };

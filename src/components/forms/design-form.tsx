@@ -3,7 +3,7 @@ import { DropZone } from '../admin-sections/drop-zone';
 import { FormControl } from './form-control';
 import { Input } from './input';
 import { Label } from './label';
-import { Design } from '../../_libs/types';
+import { CreateDesign } from '../../_libs/types';
 import { addDesigns } from '../../_libs/apis/data';
 import ButtonLoader from '../admin-sections/button-loader';
 
@@ -27,7 +27,7 @@ export const DesignForm = () => {
     e.preventDefault();
     setload(true);
     const date = Date.now();
-    const payload: Design = {
+    const payload: CreateDesign = {
       ...data,
       dateCreate: date,
     };

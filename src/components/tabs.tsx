@@ -25,16 +25,10 @@ export const Tabs = () => {
 
     const [designData, videoData] = await Promise.all([designs, videos]);
     if (mounted && designData) {
-      const data = designData.docs.map((item) => {
-        return { id: item.id, ...item.data() };
-      });
-      dispatch({ type: SET_DESIGNS, payload: data });
+      dispatch({ type: SET_DESIGNS, payload: designData });
     }
     if (mounted && videoData) {
-      const data = videoData.docs.map((item) => {
-        return { id: item.id, ...item.data() };
-      });
-      dispatch({ type: SET_VIDEOS, payload: data });
+      dispatch({ type: SET_VIDEOS, payload: videoData });
     }
   };
   const renderDesigns = () => {

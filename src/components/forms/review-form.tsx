@@ -4,9 +4,11 @@ import { FormControl } from './form-control';
 import { Input } from './input';
 import { Label } from './label';
 import { addReviews } from '../../_libs/apis/data';
-import { Review } from '../../_libs/types';
+import { CreateReview } from '../../_libs/types';
+import ButtonLoader from '../admin-sections/button-loader';
 
 export const ReviewForm = () => {
+  const [load, setload] = useState<boolean>(false);
   const [data, setData] = useState<{ img: any; name: string }>({
     img: '',
     name: '',
@@ -23,12 +25,14 @@ export const ReviewForm = () => {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
+    setload(true);
     const date: any = new Date();
-    const payload: Review = {
+    const payload: CreateReview = {
       ...data,
       dateCreate: date,
     };
     await addReviews(payload);
+    setload(false);
   };
   return (
     <form onSubmit={handleSubmit}>
@@ -46,8 +50,12 @@ export const ReviewForm = () => {
         <DropZone setFile={handleFileUpload} />
       </FormControl>
       <FormControl>
-        <button className="rounded-full w-80 bg-green-600 text-white py-3 px-1 text-lg font-semibold">
-          Submit
+        <button
+          type="submit"
+          className="rounded-full w-80 bg-green-600 text-white py-3 px-1 text-lg font-semibold"
+          disabled={load}
+        >
+          {load && <ButtonLoader />} Submit
         </button>
       </FormControl>
     </form>

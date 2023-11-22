@@ -4,10 +4,19 @@ import {
   getDocs,
   addDoc,
   QuerySnapshot,
+  deleteDoc,
+  doc,
 } from 'firebase/firestore';
 import { app } from './friebase';
-import { Design, Review, Video } from '../types';
-import { getStorage, ref, uploadBytes } from 'firebase/storage';
+import {
+  CreateDesign,
+  CreateReview,
+  CreateVideo,
+  Design,
+  Review,
+  Video,
+} from '../types';
+import { getStorage, ref, uploadBytes, deleteObject } from 'firebase/storage';
 
 const db = getFirestore(app);
 const storage = getStorage(app);
@@ -15,7 +24,10 @@ const storage = getStorage(app);
 export const getVideos = async () => {
   try {
     const response: QuerySnapshot = await getDocs(collection(db, 'videos'));
-    return response;
+    const data = response?.docs.map((item) => {
+      return { id: item.id, ...item.data() };
+    });
+    return data;
   } catch (error) {
     return;
   }
@@ -24,7 +36,10 @@ export const getVideos = async () => {
 export const getDesigns = async () => {
   try {
     const response: QuerySnapshot = await getDocs(collection(db, 'designs'));
-    return response;
+    const data = response?.docs.map((item) => {
+      return { id: item.id, ...item.data() };
+    });
+    return data;
   } catch (error) {
     return;
   }
@@ -33,13 +48,16 @@ export const getDesigns = async () => {
 export const getReviews = async () => {
   try {
     const response: QuerySnapshot = await getDocs(collection(db, 'reviews'));
-    return response;
+    const data = response?.docs.map((item) => {
+      return { id: item.id, ...item.data() };
+    });
+    return data;
   } catch (error) {
     return;
   }
 };
 
-export const addVideo = async (data: Video) => {
+export const addVideo = async (data: CreateVideo) => {
   try {
     let docRef = null;
     const time = Date.now();
@@ -54,7 +72,7 @@ export const addVideo = async (data: Video) => {
   } catch (e) {}
 };
 
-export const addDesigns = async (data: Design) => {
+export const addDesigns = async (data: CreateDesign) => {
   try {
     let docRef = null;
     const time = Date.now();
@@ -70,7 +88,7 @@ export const addDesigns = async (data: Design) => {
   } catch (e) {}
 };
 
-export const addReviews = async (data: Review) => {
+export const addReviews = async (data: CreateReview) => {
   try {
     let docRef = null;
     const time = Date.now();
@@ -82,6 +100,45 @@ export const addReviews = async (data: Review) => {
       docRef = await addDoc(collection(db, 'reviews'), payload);
     }
 
+    return docRef;
+  } catch (e) {}
+};
+
+export const deleteVideo = async (data: Video) => {
+  try {
+    const file = data.video.split('videos')[1];
+    const removeExtra = file.split('?')[0].slice(3);
+    const filePath = `videos/${removeExtra}`;
+    const videoRef = ref(storage, filePath);
+    const id: string = data.id;
+    const docRef = await deleteDoc(doc(db, 'videos', id));
+    await deleteObject(videoRef);
+    return docRef;
+  } catch (e) {}
+};
+
+export const deleteDesign = async (data: Design) => {
+  try {
+    const file = data.img.split('designs')[1];
+    const removeExtra = file.split('?')[0].slice(3);
+    const filePath = `designs/${removeExtra}`;
+    const designRef = ref(storage, filePath);
+    const id: string = data.id;
+    const docRef = await deleteDoc(doc(db, 'designs', id));
+    await deleteObject(designRef);
+    return docRef;
+  } catch (e) {}
+};
+
+export const deleteReview = async (data: Review) => {
+  try {
+    const file = data.img.split('reviews')[1];
+    const removeExtra = file.split('?')[0].slice(3);
+    const filePath = `reviews/${removeExtra}`;
+    const reviewRef = ref(storage, filePath);
+    const id: string = data.id;
+    const docRef = await deleteDoc(doc(db, 'reviews', id));
+    await deleteObject(reviewRef);
     return docRef;
   } catch (e) {}
 };
