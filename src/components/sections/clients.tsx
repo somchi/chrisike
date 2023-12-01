@@ -1,6 +1,5 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
 import { getReviews } from '../../_libs/apis/data';
-import { QueryDocumentSnapshot } from 'firebase/firestore';
 import { AppContext } from '../../context/provider';
 import { SET_REVIEWS } from '../../context/reducer';
 
@@ -17,11 +16,8 @@ export const Clients = () => {
 
   const reviews = async (mounted: boolean) => {
     const response = await getReviews();
-    const data = response?.docs.map((item) => {
-      return { id: item.id, ...item.data() };
-    });
     if (mounted) {
-      dispatch({ type: SET_REVIEWS, payload: data });
+      dispatch({ type: SET_REVIEWS, payload: response });
     }
   };
 

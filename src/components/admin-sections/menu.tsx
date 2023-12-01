@@ -1,9 +1,8 @@
 'use client';
 import { useContext } from 'react';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AdminPages } from '../../_libs/enums';
 import {
-  ADD_USER,
   CLEINT_REVIEW,
   DESIGN,
   LOGIN,
@@ -59,14 +58,14 @@ export const AdminMenu = () => {
         Add Review
       </Link>
       <Separator className="md:hidden !bg-slate-700" />
-      <Link
+      {/* <Link
         className={`${state.activeNav === AdminPages.User && 'text-green-400'}`}
         to={ADD_USER.href}
         onClick={() => handleClick(AdminPages.User)}
       >
         Add User
       </Link>
-      <Separator className="md:hidden !bg-slate-700" />
+      <Separator className="md:hidden !bg-slate-700" /> */}
       <button name="contact" onClick={handleLogout}>
         Logout
       </button>

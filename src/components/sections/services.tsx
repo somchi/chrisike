@@ -1,5 +1,4 @@
 import { forwardRef } from 'react';
-import Skill from '../skills';
 
 export const Services = forwardRef<
   HTMLSelectElement,
@@ -32,7 +31,7 @@ export const Services = forwardRef<
           </div>
           <div className="md:w-[48%] flex  flex-col gap-2 relative">
             <h1 className="font-semibold text-2xl text-gray-300">
-              Vide Editing
+              Video Editing
             </h1>
             <h2 className="line-clamp-6">
               As your content writer, you would not bother thinking of what to
@@ -42,14 +41,6 @@ export const Services = forwardRef<
             </h2>
           </div>
         </div>
-        {/* <div className="mt-8">
-          <h1 className="font-bold text-2xl">My Skills</h1>
-          <div className="grid mt-4 w-full md:justify-between flex-wrap  md:flex gap-8 gap-y-8">
-            <Skill degree="80" name="Photoshop" />
-            <Skill degree="80" name="Photoshop" />
-            <Skill degree="80" name="Photoshop" />
-          </div>
-        </div> */}
       </div>
     </section>
   );
