@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/chrisike/static/css/main.755cd63d.css",
-    "main.js": "/chrisike/static/js/main.bab65298.js",
+    "main.css": "/chrisike/static/css/main.4f970048.css",
+    "main.js": "/chrisike/static/js/main.95844cb1.js",
     "static/js/787.7b0476a1.chunk.js": "/chrisike/static/js/787.7b0476a1.chunk.js",
     "static/media/intro-bg.jpg": "/chrisike/static/media/intro-bg.3eb4a5ef388cc92f6dc2.jpg",
     "index.html": "/chrisike/index.html",
-    "main.755cd63d.css.map": "/chrisike/static/css/main.755cd63d.css.map",
-    "main.bab65298.js.map": "/chrisike/static/js/main.bab65298.js.map",
+    "main.4f970048.css.map": "/chrisike/static/css/main.4f970048.css.map",
+    "main.95844cb1.js.map": "/chrisike/static/js/main.95844cb1.js.map",
     "787.7b0476a1.chunk.js.map": "/chrisike/static/js/787.7b0476a1.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.755cd63d.css",
-    "static/js/main.bab65298.js"
+    "static/css/main.4f970048.css",
+    "static/js/main.95844cb1.js"
   ]
 }
