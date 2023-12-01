@@ -60,3 +60,7 @@ code {
   line-height: 1;
   font-weight: 700;
 }
+
+#banner {
+  background-image: url(../public/imgs/intro-bg.jpg);
+}
